@@ -1,0 +1,15 @@
+.lang-msg-wrapper {
+    text-align: left;
+    border:1px solid #E0E0E0;
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 8px;
+    box-sizing: border-box;
+}
+.confirmation-dialog-container .dialog-header {
+    justify-content: space-between !important;
+    .close-icon {
+        color: #817c7c;
+        background-color: #ffffff;
+    }
+}

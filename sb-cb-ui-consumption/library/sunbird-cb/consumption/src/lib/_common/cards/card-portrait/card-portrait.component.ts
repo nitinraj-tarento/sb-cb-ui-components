@@ -5,8 +5,10 @@ import { ConfigurationsService, EventService } from '@sunbird-cb/utils-v2';
 import * as _ from "lodash";
 import { TranslateService } from '@ngx-translate/core';
 import { MultilingualTranslationsService } from '../../../_services/multilingual-translations.service';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog'
 import { WidgetContentLibService } from '../../../_services/widget-content-lib.service';
 import { relevanceAnimation } from '../../_animations/relevance-animation';
+import { LanguageDialogeComponent } from '../../dialog-components/language-dialoge/language-dialoge.component';
 
 @Component({
   selector: 'sb-uic-card-portrait',
@@ -35,10 +37,29 @@ export class CardPortraitComponent implements OnInit {
   SAKSHAMAI_ICON_SUCCESS = '/assets/images/sakshamAI/ai-icon-success.svg'
   SAKSHAMAI_ICON_LOADER = '/assets/images/sakshamAI/saksham_ai_loader.gif'
   isHovered = false
+   languages = [
+     { name: 'Hindi', localName: 'हिन्दी', code: 'hi' },
+    { name: 'Tamil', localName: 'தமிழ்', code: 'ta' },
+    { name: 'Telugu', localName: 'తెలుగు', code: 'te' },
+    { name: 'Bengali', localName: 'বাংলা', code: 'bn' },
+    { name: 'Marathi', localName: 'मराठी', code: 'mr' },
+    { name: 'Gujarati', localName: 'ગુજરાતી', code: 'gu' },
+    { name: 'Kannada', localName: 'ಕನ್ನಡ', code: 'kn' },
+    { name: 'Malayalam', localName: 'മലയാളം', code: 'ml' },
+    { name: 'Punjabi', localName: 'ਪੰਜਾਬੀ', code: 'pa' },
+    { name: 'English', localName: 'English', code: 'en' },
+    { name: 'Odia', localName: 'ଓଡ଼ିଆ', code: 'or' },
+    { name: 'Assamese', localName: 'অসমীয়া', code: 'as' },
+    { name: 'Konkani', localName: 'कोंकणी', code: 'kok' },
+    { name: 'Sanskrit', localName: 'संस्कृतम्', code: 'sa' },
+    { name: 'Maithili', localName: 'मैथिली', code: 'mai' }
+  ];
+
   constructor(
     private snackBar: MatSnackBar,
     private translate: TranslateService,
     private langtranslations: MultilingualTranslationsService,
+    private dialog: MatDialog,
     private configSvc: ConfigurationsService,
     private contSvc: WidgetContentLibService,) { 
       this.langtranslations.languageSelectedObservable.subscribe(() => {
@@ -65,6 +86,19 @@ export class CardPortraitComponent implements OnInit {
     }
   }
 
+   openLanguageDialog(event:any): void {
+     event.stopPropagation()
+    this.dialog.open(LanguageDialogeComponent, {
+      width: '470px',
+      data: {
+        title: ' ',
+        from: 'openLanguageDialog',
+        acceptButton: '',
+        content: this.languages
+       
+      } // optional, if you need to pass data
+    });
+  }
   showSnackbar() {
     if (this.showIntranetContent) {
       this.snackBar.open('Content is only available in intranet', 'X', { duration: 2000 })

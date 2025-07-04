@@ -16,12 +16,13 @@ import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/
 import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { LanguageDialogeComponent } from './language-dialoge/language-dialoge.component';
 
 
 
 @NgModule({
     declarations: [
-        CertificateDialogComponent, AddCompetencyPopupComponent, SnackbarComponent
+        CertificateDialogComponent, AddCompetencyPopupComponent, SnackbarComponent, LanguageDialogeComponent
     ],
     imports: [
         CommonModule,
